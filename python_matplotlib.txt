@@ -1,0 +1,122 @@
+import matplotlib.pyplot as plt
+
+def remove_symbols(file):
+    punctuations = ",'#@$%^&*()-_;:\n"
+    for symbol in punctuations:
+        file = file.replace(symbol, "")
+    return file
+
+def get_sentences(file):
+    file = file.replace("!", ".")
+    file = file.replace("?", ".")
+    file = file.replace(". ", ".")
+    file = file.split(".")
+    return file
+
+def get_words(file):
+    file = file.replace("!", " ")
+    file = file.replace("?", " ")
+    file = file.replace(".", " ")
+    file = file.split()
+    return file
+
+def compare2sentences(s1, s2):
+    w1 = get_words(s1)
+    w2 = get_words(s2)
+    counter = 0
+    for w in w1:
+        if w in w2:
+            counter += 1
+        return max(counter/len(w1), counter/len(w2))
+
+def returnMatches(a, b):
+    m = len(list(set(a) & set(b)))
+    return m
+
+file1 = open("input1.txt", "r").read()
+file2 = open("input2.txt", "r").read()
+
+file1 = remove_symbols(file1)
+file2 = remove_symbols(file2)
+
+sentences1 = get_sentences(file1)
+sentences2 = get_sentences(file2)
+sentences1.sort()
+sentences2.sort()
+
+
+
+while "" in sentences1:
+    sentences1.remove("")
+while "" in sentences2:
+    sentences2.remove("")
+
+#porównywanie ilości zdań
+
+counter1 = 0
+for s1 in sentences1:
+    for s2 in sentences2:
+        if compare2sentences(s1, s2) > 0:
+            counter1 += 1
+            break
+
+sen1 = len(sentences1)
+sen2 = len(sentences2)
+
+print(len(sentences1), len(sentences2), counter1)
+
+#porównywanie ilości wspólnych słów
+
+counter2 = 0
+z1 = get_words(file1.lower())
+z2 = get_words(file2.lower())
+
+for i1 in z1:
+    for i2 in z2:
+        if compare2sentences(i1, i2) > 0:
+            counter2 += 1
+            break
+
+print(len(z1), len(z2), counter2)
+
+x1 = (" ".join(sorted(set(z1), key=z1.index)))
+x2 = (" ".join(sorted(set(z2), key=z2.index)))
+x1 = len(get_words(x1)) #ilość unikalnych wyrazów w 1
+x2 = len(get_words(x2)) #ilość unikalnych wyrazów w 2
+print(x1, x2)
+
+#ilosc wspolnych unikalnych wyrazow
+
+x3 = returnMatches(z1, z2)
+print(x3)
+
+#wykres słupkowy
+
+p1 = min(counter1/sen1, counter1/sen2)
+p2 = min(counter2/len(z1), counter2/len(z2))
+p1 *= 100
+p2 *= 100
+p = [p1, p2]
+k = ["Zdań", "Wyrazów"]
+l = [i for i, _ in enumerate(k)]
+
+plt.bar(l, p, color = "red")
+plt.ylabel("Wartość(w %)")
+plt.xlabel("Podobieństwo wg.:")
+plt.xticks(l, k)
+plt.show()
+
+#wykres kołowy
+
+xx = x3
+xy = x1 - x3 + x2 - x3
+labels = "Unikalne wspólne wyrazy", "Unikalne niewspólne wyrazy"
+sizes = [xx, xy]
+explode = (0.1, 0)
+
+fig1, ax1 = plt.subplots()
+ax1.pie(sizes, explode=explode, labels=labels, autopct="%1.1f%%",
+        shadow=True, startangle=90)
+ax1.axis("equal")
+
+plt.show()

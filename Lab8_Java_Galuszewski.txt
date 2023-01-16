@@ -1,0 +1,162 @@
+1. -----------------------------------------------------
+
+class Animal {
+  private String name;
+  private double age;
+  public void eat(){
+    System.out.println("Eating...");
+  }
+}
+
+class Fish extends Animal {
+  public void Swim(){
+    System.out.println("Swimming...");
+  }
+  public void eat(){
+    System.out.println("-Fish:");
+    super.eat();
+  }
+}
+
+class Bird extends Animal {
+  private String breed;
+  public void fly(){
+    System.out.println("Flying...");
+  }
+  public void Sing(){
+    System.out.println("Singing...");
+  }
+  public void eat(){
+    System.out.println("-Bird:");
+    super.eat();
+  }
+}
+
+class Mammal extends Animal {
+  private String color;
+  private double weight;
+  public void run(){
+    System.out.println("-Mammal:");
+    System.out.println("Running...");
+  }
+  public void eat(){
+    super.eat();
+  }
+}
+
+class Cat extends Mammal {
+  private void Cleaning(){
+    System.out.println("Cleaning...");
+  }
+  public void mew(){
+    System.out.println("Meow!");
+  }
+  public void eat(){
+    System.out.println("-Cat:");
+    this.Cleaning();
+    super.eat();
+  }
+}
+
+class Dog extends Mammal {
+  public void bark(){
+    System.out.println("Bark!");
+  }
+  public void retrieve(){
+    System.out.println("Retrieving...");
+  }
+  public void eat(){
+    System.out.println("-Dog:");
+    super.eat();
+  }
+}
+
+public class Main {
+  public static void main(String[] args){
+    Animal a = new Animal();
+    Fish f = new Fish();
+    Mammal m = new Mammal();
+    Bird b = new Bird();
+    Cat c = new Cat();
+    Dog d = new Dog();
+    a.eat();
+    f.eat();
+    f.Swim();
+    m.run();
+    m.eat();
+    b.eat();
+    b.fly();
+    b.Sing();
+    c.eat();
+    c.mew();
+    d.eat();
+    d.bark();
+    d.retrieve();
+  }
+}
+
+2. -----------------------------------------------------
+
+class Person {
+  private String name;
+  private double age;
+  
+  public String getName() {return name;}
+  public double getAge() {return age;}
+  public void setName(String x) {this.name = x;}
+  public void setAge(double x) {this.age = x;}
+  public void display(){System.out.println("Name: " + name + "Age: " + age);}
+}
+
+class Student extends Person {
+  private String fieldOfStudy;
+  public String getFieldOfStudy() {return fieldOfStudy;}
+  public void setFieldOfStudy(String x) {this.fieldOfStudy = x;}
+  public void learn() {System.out.println("Learning...");}
+  public void party() {System.out.println("Partying...");}
+  public void display() {super.display(); System.out.println("Field of study: " + fieldOfStudy);}
+}
+
+class Pensioner extends Person {
+  private double income;
+  public double getIncome() {return income;}
+  public void setIncome(double x) {this.income = x;}
+  public void travel() {System.out.println("Traveling...");}
+  public void visiting() {System.out.println("Visiting...");}
+  public void display() {super.display(); System.out.println("Income: " + income);}
+}
+
+class Employee extends Person {
+  private double salary;
+  public double getSalary() {return salary;}
+  public void setSalary(double x) {this.salary = x;}
+  public void display() {super.display(); System.out.println("Salary: " + salary);}
+}
+
+class Manager extends Employee {
+  private void monitoring() {System.out.println("Monitoring...");}
+  public void display() {super.display();}
+}
+
+class Accountant extends Employee {
+  public void calculating() {System.out.println("Calculating...");}
+  public void reporting() {System.out.println("Reporting...");}
+  public void display() {super.display();}
+}
+
+class Main {  
+  public static void main(String args[]) { 
+    Person per = new Person();
+    Student stu = new Student();
+    Pensioner pen = new Pensioner();
+    Employee emp = new Employee();
+    Manager man = new Manager();
+    Accountant acc = new Accountant();
+    per.display();
+    stu.display();
+    pen.display();
+    emp.display();
+    man.display();
+    acc.display();
+  }
+}

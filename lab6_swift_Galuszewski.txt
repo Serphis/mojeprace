@@ -1,0 +1,522 @@
+1.
+import Foundation
+
+func PKuli(r:Double) {
+  let pole = String(format: "%.1f", Double.pi * pow(r, 2) * 4)
+  print("Promień kuli =", r)
+  print("Pole kuli =", pole)
+  print("")
+}
+
+func VKuli(r:Double) {
+  let objetosc = String(format: "%.1f", Double.pi * pow(r, 3) * 4/3)
+  print("Promień kuli =", r)
+  print("Objętość kuli =", objetosc)
+  print("")
+}
+
+func PStozka(r:Double, l:Double) {
+  let pole = String(format: "%.1f", Double.pi * pow(r, 2) + Double.pi * r * l)
+  print("Promień stożka =", r)
+  print("Tworząca stożka =", l)
+  print("Pole całkowite stożka =", pole)
+  print("")
+}
+
+func VStozka(r:Double, H:Double) {
+  let objetosc = String(format: "%.1f", 1/3 * Double.pi * pow(r, 2) * H)
+  print("Promień stożka =", r)
+  print("Wysokość stożka =", H)
+  print("Objętość stożka =", objetosc)
+  print("")
+}
+
+func PSzescianu(a:Double) {
+  let pole = String(format: "%.1f", pow(a, 3))
+  print("Długość krawędzi sześcianu =", a)
+  print("Pole całkowite sześcianu =", pole)
+  print("")
+}
+
+func VSzescianu(a:Double) {
+  let objetosc = String(format: "%.1f", 6 * pow(a, 2))
+  print("Długość krawędzi sześcianu =", a)
+  print("Objętość sześcianu =", objetosc)
+  print("")
+}
+
+//pole kuli
+print("Podaj promień kuli(pole):")
+var r1 = Double(readLine()!)!
+
+if (r1 != 0){
+  PKuli(r:r1)
+}
+else{
+  print("Nieprawidłowa liczba(0).")
+  print("")
+}
+
+//objetosc kuli
+print("Podaj promień kuli(objętość):")
+var r2 = Double(readLine()!)!
+
+if (r2 != 0){
+  VKuli(r:r2)
+}
+else{
+  print("Nieprawidłowa liczba(0).")
+  print("")
+}
+
+//pole stozka
+print("Podaj promień stożka(pole):")
+var r3 = Double(readLine()!)!
+print("Podaj tworzącą stożka(pole):")
+var l1 = Double(readLine()!)!
+
+if (r3 != 0 && l1 != 0){
+  PStozka(r:r3, l:l1)
+}
+else{
+  print("Nieprawidłowa liczba(0).")
+  print("")
+}
+
+//objetosc stozka
+print("Podaj promień stożka(objętość):")
+var r4 = Double(readLine()!)!
+print("Podaj wysokość stożka(objętość):")
+var h1 = Double(readLine()!)!
+
+if (r4 != 0  && h1 != 0){
+  VStozka(r:r4, H:h1)
+}
+else{
+  print("Nieprawidłowa liczba(0).")
+  print("")
+}
+
+//pole szescianu
+print("Podaj długość krawędzi sześcianu(pole):")
+var a1 = Double(readLine()!)!
+
+if (a1 != 0){
+  PSzescianu(a:a1)
+}
+else{
+  print("Nieprawidłowa liczba(0).")
+  print("")
+}
+
+//pole szescianu
+print("Podaj długość krawędzi sześcianu(objętość):")
+var a2 = Double(readLine()!)!
+
+if (a2 != 0){
+  VSzescianu(a:a2)
+}
+else{
+  print("Nieprawidłowa liczba(0).")
+  print("")
+}
+
+
+
+
+
+
+
+
+
+
+2.
+func BMI(m:Double, h:Double){
+  let BMI:Double = m/(h*h)
+  print("BMI =", BMI)
+  if (BMI<16){
+    print("Wygłodzenie(BMI mniejsze niż 16)")
+  }
+  else if(BMI>=16 && BMI<17){
+    print("Wychudzenie(BMI pomiędzy 16, a 16,99)")
+  }
+  else if(BMI>=17 && BMI<18.5){
+    print("Niedowaga(BMI pomiędzy 17, a 18,49)")
+  }
+  else if(BMI>=18.5 && BMI<25){
+    print("Waga prawidłowa(BMI pomiędzy 18,5, a 24,99)")
+  }
+  else if(BMI>=25 && BMI<30){
+    print("Nadwaga(BMI pomiędzy 25, a 29,9)")
+  }
+  else if(BMI>=30 && BMI<35){
+    print("I stopień otyłości(BMI pomiędzy 30, a 34,99)")
+  }
+  else if(BMI>=35 && BMI<40){
+    print("II stopień otyłości(BMI pomiędzy 35, a 39,99)")
+  }
+  else if(BMI>=40){
+    print("Otyłość skrajna(BMI powyżej 40)")
+  }
+}
+
+print("Licznik BMI")
+print("Podaj masę ciała:")
+var m1 = Double(readLine()!)!
+print("Podaj wzrost:")
+var h1 = Double(readLine()!)!
+
+BMI(m:m1, h:h1)
+
+
+
+
+
+
+
+
+
+
+
+
+3.
+func bin(bina: Int){
+  let liczba1 = String(bina, radix: 2)
+  print("Liczba", bina, "binarnie wynosi:", String(liczba1))
+}
+
+func hex(hexa: Int){
+  let liczba2 = String(hexa, radix: 16)
+  print("Liczba", hexa, "szesnastkowo wynosi:", String(liczba2))
+}
+
+func bintohex(binb: Int){
+  let hex = String(binb, radix: 16)
+  print("Liczba zapisana binarnie", binb, "to szesnatkowo:", String(hex))
+}
+
+func hextobin(binc: Int){
+  let bin = String(binc, radix: 2)
+  print("Liczba zapisana szesnastkowo", binc, "to binarnie:", String(bin))
+}
+
+func dectooct(dec: Int){
+  let oct = String(dec, radix: 8)
+  print("Liczba", dec, "ósemkowo wynosi:", String(oct))
+}
+
+print("Podaj liczbę całkowitą: ")
+var calkowita:Int = Int(readLine()!)!
+bin(bina: calkowita)
+hex(hexa: calkowita)
+dectooct(dec: calkowita)
+
+print("Podaj liczbę binarną: ")
+var binarna:Int = Int(readLine()!)!
+bintohex(binb: binarna)
+
+print("Podaj liczbę zapisaną szesnastkowo: ")
+var szesnastkowa:Int = Int(readLine()!)!
+hextobin(binc: szesnastkowa)
+
+
+
+
+
+
+
+
+
+4.
+func dysk(gb:Int){
+  let info = gb * 1000000000
+  let size = info / 1024 / 1024 / 1024
+  print("Prawdziwa pojemność dysku o rozmiarze", gb, "GB wynosi", String(size), "GB")
+}
+
+print("Podaj pojemność dysku(GB): ")
+var gb:Int = Int(readLine()!)!
+dysk(gb: gb)
+
+
+
+
+
+
+
+
+5.
+func THBnUSD(choicex1: Int){
+  if (choicex1 == 1){
+    print("Podaj USD")
+    let value1:Double = Double(readLine()!)!
+    let THB:Double = value1 * 33.48
+    print(value1, "USD =", THB, "THB")
+  }
+  else if (choicex1 == 2){
+    print("Podaj THB")
+    let value1:Double = Double(readLine()!)!
+    let USD:Double = value1 * 0.03
+    print(value1, "THB =", USD, "USD")
+  }
+  else{
+    print("Błąd")
+  }
+}
+
+func BTCnUSD(choicex2: Int){
+  if (choicex2 == 1){
+    print("Podaj USD")
+    let value2:Double = Double(readLine()!)!
+    let BTC:Double = value2 * 0.000058
+    print(value2, "USD =", BTC, "BTC")
+  }
+  else if (choicex2 == 2){
+    print("Podaj BTC")
+    let value2:Double = Double(readLine()!)!
+    let USD:Double = value2 * 17344
+    print(value2, "BTC =", USD, "USD")
+  }
+  else{
+    print("Błąd")
+  }
+}
+
+func BTNnUSD(choicex3: Int){
+  if (choicex3 == 1){
+    print("Podaj USD")
+    let value3:Double = Double(readLine()!)!
+    let BTN:Double = value3 * 81.58
+    print(value3, "USD =", BTN, "BTN")
+  }
+  else if (choicex3 == 2){
+    print("Podaj BTN")
+    let value3:Double = Double(readLine()!)!
+    let USD:Double = value3 * 0.012
+    print(value3, "BTN =", USD, "USD")
+  }
+  else{
+    print("Błąd")
+  }
+}
+
+func MROnUSD(choicex4: Int){
+  if (choicex4 == 1){
+    print("Podaj USD")
+    let value4:Double = Double(readLine()!)!
+    let MRO:Double = value4 * 36.30
+    print(value4, "USD =", MRO, "MRO")
+  }
+  else if (choicex4 == 2){
+    print("Podaj MRO")
+    let value4:Double = Double(readLine()!)!
+    let USD:Double = value4 * 0.028
+    print(value4, "MRO =", USD, "USD")
+  }
+  else{
+    print("Błąd")
+  }
+}
+
+func ETHnUSD(choicex5: Int){
+  if (choicex5 == 1){
+    print("Podaj USD")
+    let value5:Double = Double(readLine()!)!
+    let ETH:Double = value5 * 0.00075
+    print(value5, "USD =", ETH, "ETH")
+  }
+  else if (choicex5 == 2){
+    print("Podaj ETH")
+    let value5:Double = Double(readLine()!)!
+    let USD:Double = value5 * 1324.82
+    print(value5, "ETH =", USD, "USD")
+  }
+  else{
+    print("Błąd")
+  }
+}
+
+func ZWLnUSD(choicex6: Int){
+  if (choicex6 == 1){
+    print("Podaj USD")
+    let value6:Double = Double(readLine()!)!
+    let ZWL:Double = value6 * 322
+    print(value6, "USD =", ZWL, "ZWL")
+  }
+  else if (choicex6 == 2){
+    print("Podaj ZWL")
+    let value6:Double = Double(readLine()!)!
+    let USD:Double = value6 * 0.003106
+    print(value6, "ZWL =", USD, "USD")
+  }
+  else{
+    print("Błąd")
+  }
+}
+
+print("Wybierz opcję: ")
+print("1. Kalkulator USD-THB/THB-USD")
+print("2. Kalkulator USD-BTC/BTC-USD")
+print("3. Kalkulator USD-BTN/BTN-USD")
+print("4. Kalkulator USD-MRO/MRO-USD")
+print("5. Kalkulator USD-ETH/ETH-USD")
+print("6. Kalkulator USD-ZWL/ZWL-USD")
+
+let choice:Int = Int(readLine()!)!
+if (choice == 1){
+  print("Wybierz(1/2):")
+  print("1.USD na THB")
+  print("2.THB na USD")
+  let choice1:Int = Int(readLine()!)!
+  THBnUSD(choicex1:choice1)
+}
+
+else if(choice == 2){
+  print("Wybierz(1/2):")
+  print("1.USD na BTC")
+  print("2.BTC na USD")
+  let choice1:Int = Int(readLine()!)!
+  BTCnUSD(choicex2:choice1)
+}
+
+else if(choice == 3){
+  print("Wybierz(1/2):")
+  print("1.USD na BTN")
+  print("2.BTN na USD")
+  let choice1:Int = Int(readLine()!)!
+  BTNnUSD(choicex3:choice1)
+}
+
+else if(choice == 4){
+  print("Wybierz(1/2):")
+  print("1.USD na MRO")
+  print("2.MRO na USD")
+  let choice1:Int = Int(readLine()!)!
+  MROnUSD(choicex4:choice1)
+}
+
+else if(choice == 5){
+  print("Wybierz(1/2):")
+  print("1.USD na ETH")
+  print("2.ETH na USD")
+  let choice1:Int = Int(readLine()!)!
+  ETHnUSD(choicex5:choice1)
+}
+
+else if(choice == 6){
+  print("Wybierz(1/2):")
+  print("1.USD na ZWL")
+  print("2.ZWL na USD")
+  let choice1:Int = Int(readLine()!)!
+  ZWLnUSD(choicex6:choice1)
+}
+
+
+
+
+
+
+
+
+
+
+
+6.
+func edge(temp:Double){
+  let fahren:Double = temp * 1.8 + 32
+  print(temp, "C =", fahren, "F")
+  if (fahren <= 32){
+    print("Woda zamarza")
+  }
+  else if(fahren >= 212){
+    print("Woda wrze")
+  }
+}
+
+func KelnFahr(choicex1: Int){
+  if (choicex1 == 1){
+    print("Podaj Kelwin")
+    let value1:Double = Double(readLine()!)!
+    let Fahr:Double = (value1-273.15)*1.8+32
+    print(value1, "Kelwin =", Fahr, "Fahrenheit")
+  }
+  else if (choicex1 == 2){
+    print("Podaj Fahrenheit")
+    let value1:Double = Double(readLine()!)!
+    let Kel:Double = ((value1-32)/1.8)+273.15
+    print(value1, "Fahrenheit =", Kel, "Kelwin")
+  }
+  else{
+    print("Błąd")
+  }
+}
+
+func KelnCel(choicex2: Int){
+  if (choicex2 == 1){
+    print("Podaj Kelwin")
+    let value2:Double = Double(readLine()!)!
+    let Cel:Double = value2 - 273.15
+    print(value2, "K =", Cel, "C")
+  }
+  else if (choicex2 == 2){
+    print("Podaj Celsjusz")
+    let value2:Double = Double(readLine()!)!
+    let Kel:Double = value2 + 273.15
+    print(value2, "C =", Kel, "K")
+  }
+  else{
+    print("Błąd")
+  }
+}
+
+func ReanCel(choicex3: Int){
+  if (choicex3 == 1){
+    print("Podaj Reamur")
+    let value3:Double = Double(readLine()!)!
+    let Cel:Double = value3 / 0.80000
+    print(value3, "R =", Cel, "C")
+  }
+  else if (choicex3 == 2){
+    print("Podaj Celsjusz")
+    let value3:Double = Double(readLine()!)!
+    let Rea:Double = value3 * 0.80000
+    print(value3, "C =", Rea, "Re")
+  }
+  else{
+    print("Błąd")
+  }
+}
+
+print("Podaj temperaturę w stopniach Celsjusza:")
+var cels:Double = Double(readLine()!)!
+edge(temp:cels)
+
+print("Wybierz opcję: ")
+print("1. Kalkulator Kelwin-Fahrenheit/Fahrenheit-Kelwin")
+print("2. Kalkulator Kelwin-Celsjusz/Celsjusz-Kelwin")
+print("3. Kalkulator Reaumur-Celsjusz/Celsjusz-Reaumur")
+
+let choice:Int = Int(readLine()!)!
+if (choice == 1){
+  print("Wybierz(1/2):")
+  print("1.Kelwin-Fahrenheit")
+  print("2.Fahrenheit-Kelwin")
+  let choice1:Int = Int(readLine()!)!
+  KelnFahr(choicex1:choice1)
+}
+
+else if(choice == 2){
+  print("Wybierz(1/2):")
+  print("1.Kelwin-Celsjusz")
+  print("2.Celsjusz-Kelwin")
+  let choice1:Int = Int(readLine()!)!
+  KelnCel(choicex2:choice1)
+}
+
+else if(choice == 3){
+  print("Wybierz(1/2):")
+  print("1.Reaumur-Celsjusz")
+  print("2.Celsjusz-Reaumur")
+  let choice1:Int = Int(readLine()!)!
+  ReanCel(choicex3:choice1)
+}

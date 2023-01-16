@@ -1,0 +1,188 @@
+import random
+from threading import Thread
+
+class Table:
+    def __init__(self, size):
+        self.size = size
+        self.net = []
+        self.create_table()
+
+    def create_table(self):
+        for i in range(self.size):
+            self.net.append(random.randint(1,10000))
+
+    def draw_table(self):
+        print(self.net)
+
+    def sum(self, nett):
+        for i in range(len(nett)):
+            if len(nett) % 2 == 0:
+                if i % 2 == 0:
+                    if i != len(nett) - 1:
+                        nett[i] += nett[i + 1]
+                    if i == len(nett) - 1:
+                        nett[i] = nett[i]
+                elif i % 2 == 1:
+                    nett[i] = 0
+            if len(nett) % 2 == 1:
+                if i % 2 == 0:
+                    if i != len(nett) - 1:
+                        nett[i] += nett[i + 1]
+                    if i == len(nett) - 1:
+                        nett[i] = nett[i]
+                elif i % 2 == 1:
+                    nett[i] = 0
+        return nett
+
+    def count(self):
+        a_list = self.net
+        half = len(a_list) // 2
+        a, b = a_list[:half], a_list[half:]
+        while len(a) and len(b) != 1:
+            watek1 = Thread(target=self.sum, args=(a,))
+            watek2 = Thread(target=self.sum, args=(b,))
+            watek1.start()
+            watek2.start()
+            watek1.join()
+            watek2.join()
+            a = [i for i in a if i != 0]
+            b = [i for i in b if i != 0]
+        c = [a[0], b[0]]
+        watek3 = Thread(target=self.sum, args=(c,))
+        watek3.start()
+        watek3.join()
+        c = [i for i in c if i != 0]
+        print("suma wszystkich liczb w tablicy =", c[0])
+
+def main1():
+    ask1 = int(input("podaj rozmiar tablicy "))
+    if ask1 == 0 or ask1 == 1 or ask1 < 0 :
+        print("podaj prawidłową wartość")
+    else:
+        table = Table(ask1)
+        table.draw_table()
+        table.count()
+
+class Minimum:
+    def __init__(self):
+        self.list = []
+    def creator(self, x):
+        for i in range(0,x):
+            self.list.append(random.randint(0,10000))
+    def remover(self, y):
+        if y[0] > y[1]:
+            y.remove(y[0])
+        elif y[0] < y[1]:
+            y.remove(y[1])
+        elif y[0] == y[1]:
+            y.remove(y[1])
+    def destroyer(self):
+        print(self.list)
+        b_list = self.list
+        half = len(b_list) // 2
+        a, b = b_list[:half], b_list[half:]
+        while len(a) and len(b) != 1:
+            watek11 = Thread(target=self.remover, args=(a,))
+            watek22 = Thread(target=self.remover, args=(b,))
+            watek11.start()
+            watek22.start()
+            watek11.join()
+            watek22.join()
+        c = [a[0], b[0]]
+        watek33 = Thread(target=self.remover, args=(c,))
+        watek33.start()
+        watek33.join()
+        print("najmniejsza liczba z tabeli =", c[0])
+        return c
+
+def main2():
+    ask2 = int(input("podaj rozmiar tablicy "))
+    if ask2 == 0 or ask2 == 1 or ask2 < 0:
+        print("podaj prawidłową wartość")
+    else:
+        lista = Minimum()
+        lista.creator(ask2)
+        lista.destroyer()
+
+class Tekst:
+    def __init__(self):
+        self.tekst = ""
+    def remover(self, x):
+        punctuations = ",'#@$%^&*()-_;:\n"
+        for symbol in punctuations:
+            file = file.replace(symbol, "")
+        return file
+
+    def wybor(self, x):
+        self.liczba = x
+        if self.liczba == 1:
+            self.tekst = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nisi mi, vehicula eget erat et, rutrum euismod mi. Vivamus molestie ligula nulla. Phasellus placerat id ligula a elementum. Etiam tristique tortor nec libero porta accumsan. In condimentum gravida faucibus. In aliquet ultrices tempus. Aliquam hendrerit eleifend neque dapibus laoreet. Maecenas gravida ligula non tellus ultricies dignissim. Ut dui dolor, tincidunt non libero vel, commodo pretium elit. Nullam et viverra justo. Nam dictum eleifend mauris, a aliquam enim sollicitudin id."
+            print(self.tekst)
+        if self.liczba == 2:
+            self.tekst = "Duis ut diam dapibus, feugiat magna non, fringilla metus. Donec elementum nisi quis diam vestibulum lobortis. Morbi eget felis non nunc blandit suscipit. Ut sollicitudin vulputate nisi. Aenean quis consequat urna. Donec fermentum dolor dictum turpis gravida aliquam. Vivamus laoreet convallis ante in mattis. Cras eu sapien ac magna tempus tempus. Morbi vitae dui libero. Curabitur mattis et velit vitae consequat."
+            print(self.tekst)
+        if self.liczba == 3:
+            self.tekst = "Duis vestibulum sagittis elit vitae elementum. Vestibulum suscipit mattis tellus, in posuere orci. Ut non mi sit amet tellus tempor consequat non et diam. Duis elementum ante felis, sed sagittis mauris accumsan eu. In diam turpis, aliquet sit amet pellentesque eu, blandit ut odio. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Curabitur at eros sodales, suscipit libero a, vestibulum justo. Ut quis arcu sed ligula facilisis porttitor vel a leo. Suspendisse potenti."
+            print(self.tekst)
+
+    def get_char(self, x):
+        drawer = []
+        vowels = ["a", "e", "i", "o", "u", "y"]
+        for char in x:
+            if char in vowels:
+                drawer.append([char])
+        return drawer
+
+    def ending(self):
+        self.tekst = self.get_char(self.tekst)
+        b_list = self.tekst
+        half = len(b_list) // 2
+        a, b = b_list[:half], b_list[half:]
+        half1 = len(a) // 2
+        half2 = len(b) // 2
+        c, d = a[:half1], a[half1:]
+        e, f = b[:half2], b[half2:]
+        watek111 = Thread(target=self.get_char, args=(c,))
+        watek222 = Thread(target=self.get_char, args=(d,))
+        watek333 = Thread(target=self.get_char, args=(e,))
+        watek444 = Thread(target=self.get_char, args=(f,))
+        watek111.start()
+        watek222.start()
+        watek333.start()
+        watek444.start()
+        watek111.join()
+        watek222.join()
+        watek333.join()
+        watek444.join()
+        g = len(c) + len(d) + len(e) + len(f)
+        return g
+
+def main3():
+    ask3 = int(input("wybierz tekst(1/2/3) "))
+    if ask3 not in [1, 2, 3]:
+        print("podaj prawidłową wartość")
+    else:
+        dolny = Tekst()
+        dolny.wybor(ask3)
+        print("ilość samogłosek w tekście", dolny.liczba, ":", dolny.ending())
+
+def interfejs():
+    prawda = True
+    while prawda:
+        print("1. suma liczb w tablicy\n"
+              "2. minimum w zbiorze nieuporządkowanym\n"
+              "3. policzenie samogłosek w tekście\n"
+              "4. wyłączenie programu")
+        u = int(input(""))
+        if u == 1:
+            main1()
+            print("")
+        if u == 2:
+            main2()
+            print("")
+        if u == 3:
+            main3()
+        if u == 4:
+            exit()
+
+interfejs()

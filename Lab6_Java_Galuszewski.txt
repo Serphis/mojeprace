@@ -1,0 +1,265 @@
+1.
+
+import java.util.*;
+
+class Main {  
+  public static void main(String args[]) { 
+    Scanner scr = new Scanner(System.in);
+    double r, h, l;
+    
+    System.out.println("Podaj r");
+    r = scr.nextDouble();
+    System.out.println("Podaj h");
+    h = scr.nextDouble();
+    l = Math.sqrt(h*h + r*r);
+    System.out.println("V = " + Obj(r, h));
+    System.out.println("P = " + Pole(r, l));
+    
+  }
+  static double Obj(double r, double h){
+    return (3.14 * Math.pow(r, 2) * h) / 3;
+  }
+
+  static double Pole(double r, double l){
+    return 3.14 * r * (r + l);
+  }
+}
+
+2.
+
+import java.util.*;
+
+class Main {  
+  public static void main(String args[]) { 
+    Scanner scr = new Scanner(System.in);
+    int x;
+    
+    System.out.println("Podaj ilosc punktow");
+    x = scr.nextInt();
+    if (x >= 0 && x <= 100){
+      System.out.println("Ocena: " + grade(x));
+    }
+    else{
+      System.out.println("Nieprawidlowa liczba");
+    }
+  }
+  static double grade(int x){
+    if (x >= 0 && x <= 50){
+      return 2.0;
+    }
+    else if (x >= 51 && x <= 60){
+      return 3.0;
+    }
+    else if (x >= 61 && x <= 70){
+      return 3.5;
+    }
+    else if (x >= 71 && x <= 80){
+      return 4.0;
+    }
+    else if (x >= 81 && x <= 90){
+      return 4.5;
+    }
+    else {
+      return 5.0;
+    }
+  }
+}
+
+3.
+
+import java.util.*;
+
+class Main {  
+  public static void main(String args[]) { 
+    Scanner scr = new Scanner(System.in);
+    int a, b, c;
+    
+    System.out.println("Podaj a");
+    a = scr.nextInt();
+    System.out.println("Podaj b");
+    b = scr.nextInt();
+    System.out.println("Podaj c");
+    c = scr.nextInt();
+    
+    if (a > 0 && b > 0 && c > 0 ){
+      System.out.println("a^2 + b^2 =? c^2: " + pitagoras(a, b, c));
+      System.out.println("b^2 + c^2 =? a^2: " + pitagoras(b, c, a));
+      System.out.println("c^2 + a^2 =? b^2: " + pitagoras(c, a, b));
+    }
+    else{
+      System.out.println("Nieprawidlowa liczba");
+    }
+  }
+  static String pitagoras(int a, int b, int c){
+    if (Math.pow(a, 2) + Math.pow(b, 2) == Math.pow(c,2)){
+      return "Tak";
+    }
+    else{
+      return "Nie";
+    }
+  }
+}
+
+4.
+
+import java.util.*;
+
+class Main {  
+  public static void main(String args[]) { 
+    Scanner scr = new Scanner(System.in);
+    boolean p, q;
+    
+    System.out.println("Podaj p");
+    p = scr.nextBoolean();
+    System.out.println("Podaj q");
+    q = scr.nextBoolean();
+    
+    System.out.println(" ~(p^q) = (~p) v (~q) " + bul(p, q));
+    
+  }
+  static String bul(boolean p, boolean q){
+    if (!(p && q) == (!p) || (!q)){
+      return "Tak";
+    }
+    else{
+      return "Nie";
+    }
+  }
+}
+
+5.
+
+import java.util.*;
+
+class Main {  
+  public static void main(String args[]) { 
+    Scanner scr = new Scanner(System.in);
+    int x;
+    
+    System.out.println("Podaj liczbę dni");
+    x = scr.nextInt();
+    if (x > 0){
+      System.out.println("Cena: " + pobyt(x) + "zł");
+    }
+    else{
+      System.out.println("Nieprawidłowa liczba");
+    }
+  }
+
+  static int pobyt(int x){
+    if (x > 10){
+      return x*150;
+    }
+    else if (x >= 5 && x <= 10){
+      return x*200;
+    }
+    else {
+      return x*250;
+    }
+}
+}
+
+6.
+
+import java.util.*;
+
+class Main {  
+  public static void main(String args[]) { 
+    Scanner scr = new Scanner(System.in);
+    int x;
+    
+    System.out.println("Podaj liczbę");
+    x = scr.nextInt();
+    if (x > 0){
+      for (int i = 1; i < 2*x; i++){
+        for (int j = Math.abs(i-x); j < x; j++){
+          System.out.print("*");
+        }
+      System.out.println();
+    }
+    }
+    else{
+      System.out.println("Nieprawidłowa liczba");
+    }
+  }
+}
+
+7.
+
+import java.util.*;
+
+class Main {  
+  public static void main(String args[]) { 
+    Scanner scr = new Scanner(System.in);
+    int x;
+    
+    System.out.print("Wiek psa w ludzkich latach: ");
+    x = scr.nextInt();
+    if (x > 0){
+      System.out.println("Wiek psa w psich latach: " + psielata(x));
+    }
+    else{
+      System.out.println("Nieprawidłowa liczba");
+    }
+  }
+
+  static int psielata(int x){
+    int a = 1;
+    if (x <= 2){
+      x = x * 10;
+    }
+    else if(x > 2){
+      x = ((x-2) * 4) + 20;
+    }
+    return x;
+}
+}
+
+8.
+
+import java.util.*;
+
+class Main {  
+  public static void main(String args[]) { 
+    Scanner scr = new Scanner(System.in);
+
+    System.out.println("Hasło powinno zawierać: ");
+    System.out.println("Co najmniej 1 litera między [a-z] i 1 litera między [A-Z].");
+    System.out.println("Co najmniej 1 cyfra między [0-9].");
+    System.out.println("Co najmniej 1 znak od [$#@].");
+    System.out.println("Długość hasła 6-16 znaków.");
+    System.out.println("");
+    
+    System.out.print("Podaj hasło: ");
+    String x = scr.nextLine();
+    System.out.println(walidacja(x));
+  }
+
+  static String walidacja(String x){
+    char a, b;
+    String d = "Hasło zawiera: ";
+
+    for(a = 'A'; a <= 'Z'; ++a)
+      if (x.contains(String.valueOf(a))){
+        d += "\n|Co najmniej 1 duża litera| ";
+        break;
+      }
+    for(b = 'a'; b <= 'z'; ++b)
+      if (x.contains(String.valueOf(b))){
+        d += "\n|Co najmniej 1 mała litera| ";
+        break;
+      }
+    for(int c = 0; c <= 9; ++c)
+      if (x.contains(String.valueOf(c))){
+        d += "\n|Co najmniej 1 cyfra od 0 do 9| ";
+        break;
+      }
+    if (x.contains("$") || x.contains("#") || x.contains("@")){
+      d += "\n|Co najmniej 1 Znak $#@| ";
+    }
+    if (x.length() >= 6 && x.length() <= 16){
+      d += "\n|Minimalna długość 6 znaków, a maksymalna 16| ";
+    }
+    return d;
+}
+}

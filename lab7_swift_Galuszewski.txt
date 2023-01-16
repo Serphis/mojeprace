@@ -1,0 +1,152 @@
+1.
+
+class Samochód{
+  var marka:String = ""
+  var model:String = ""
+  var przebieg:String = ""
+  var kolor:String = ""
+  var rodzaj:String = ""
+
+  func jedzprosto(){print("Jazda prosto. Obecny przebieg:", self.przebieg)}
+  func podajkolor(){print(self.kolor)}
+  func podajmodel(){print(self.model)}
+  func podajmarke(){print(self.marka)}
+  func podajrodzaj(){print(self.rodzaj)}
+  func prezentacja(){print("Marka:", self.marka, "\nModel:", self.model, "\nKolor:", self.kolor, "\nRodzaj:", self.rodzaj, "\nPrzebieg:", self.przebieg, "km\n")}
+
+  init(marka:String, model:String, przebieg:String, kolor:String, rodzaj:String){
+    self.marka = marka
+    self.model = model
+    self.przebieg = przebieg
+    self.kolor = kolor
+    self.rodzaj = rodzaj
+  }
+}
+
+var testarossa = Samochód(marka:"Ferrari", model:"Testarossa", przebieg:"60000", kolor:"Czerwony", rodzaj:"Kabriolet")
+
+var karin = Samochód(marka:"Citroen", model:"Karin", przebieg:"8000000", kolor:"Brązowy", rodzaj:"Piramida")
+
+var etna = Samochód(marka:"Lotus", model:"Etna", przebieg:"20", kolor:"Biały", rodzaj:"Coupe")
+
+var maya = Samochód(marka:"Ford", model:"Maya", przebieg:"43000", kolor:"Srebrny", rodzaj:"Coupe")
+
+var vantage = Samochód(marka:"Aston Martin", model:"Vantage", przebieg:"80001", kolor:"Malachitowy", rodzaj:"Coupe")
+
+testarossa.prezentacja()
+karin.prezentacja()
+etna.prezentacja()
+maya.prezentacja()
+vantage.prezentacja()
+
+
+
+
+
+
+
+
+2.
+
+class student{
+  var imie:String = ""
+  var nazwisko:String = ""
+  var wiek:Int = 0
+  var ocena:Int = 0
+  var wzrost:String = ""
+  var hobby:String = ""
+  var pet:String = ""
+  var choroby:String = ""
+  var osobowosc:String = ""
+  var pogladypol:String = ""
+
+  func prezentacja(){print("Imię:", self.imie, "\nNazwisko:", self.nazwisko, "\nWiek:", self.wiek, "\nWzrost:", self.wzrost, "\nHobby:", self.hobby, "\nPet:", self.pet, "\nChoroby:", self.choroby, "\nOsobowość:", self.osobowosc, "\nPoglądy polityczne:", self.pogladypol)}
+
+  func egzamin(punkty:Double){
+    if (punkty<=5){
+      print("Ilość punktów -", punkty, "\nOcena - 2")
+    }
+    else if (punkty==6 || punkty==7){
+      print("Ilość punktów -", punkty, "\nOcena - 3")
+    }
+    else if (punkty==8 || punkty==9){
+      print("Ilość punktów -", punkty, "\nOcena - 4")
+    }
+    else if (punkty==10){
+      print("Ilość punktów -", punkty, "\nOcena - 5")
+    }
+  }
+
+  init(imie:String, nazwisko:String, wiek:Int, wzrost:String, hobby:String, pet:String, choroby:String, osobowosc:String, pogladypol:String){
+    self.imie = imie
+    self.nazwisko = nazwisko
+    self.wiek = wiek
+    self.wzrost = wzrost
+    self.hobby = hobby
+    self.pet = pet
+    self.choroby = choroby
+    self.osobowosc = osobowosc
+    self.pogladypol = pogladypol
+  }
+}
+
+var osoba = student(imie:"Zawisza", nazwisko:"Czarny", wiek:653, wzrost:"231 cm", hobby:"Rekonstrukcje historyczne", pet:"Koń", choroby:"Brak", osobowosc:"Prawy", pogladypol:"Monarchista\n")
+
+osoba.prezentacja()
+osoba.egzamin(punkty:9)
+
+
+
+
+
+
+
+3.
+
+class Restaurant{
+  var flavors:[String] = ["vanilla", "chocolate", "strawberry"]
+  var coffee:[String] = ["americano", "latte", "espresso"]
+}
+
+class IceCreamStand: Restaurant{
+  var smaki:String = ""
+  func flavors(){
+    for i in self.flavors{
+        smaki+=i+" "
+      }
+  }
+  func show_flavors(){
+    print("Dostępne lody:", smaki)
+    }
+  func add_flavors(x:String){
+    smaki.append(x)
+  }
+  }
+
+class CoffeeShop: Restaurant{
+  var kawy:String = ""
+  func coffee(){
+    for j in self.coffee{
+        kawy+=j+" "
+      }
+  }
+  func show_coffee(){
+    print("Dostępne kawy:", kawy)
+    }
+  func add_coffee(y:String){
+    kawy.append(y)
+  }
+}
+
+var algida = IceCreamStand()
+var starbunio = CoffeeShop()
+
+algida.flavors()
+algida.show_flavors()
+algida.add_flavors(x:"coffee")
+algida.show_flavors()
+
+starbunio.coffee()
+starbunio.show_coffee()
+starbunio.add_coffee(y:"white")
+starbunio.show_coffee()
