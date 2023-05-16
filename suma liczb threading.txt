@@ -1,0 +1,24 @@
+import random
+from threading import Thread
+
+net = []
+for m in range(8):
+    net.append(random.randint(1, 9))
+print("Lista:", net)
+
+def mat(i):
+    for j in range(0, len(net), 2 ** (i + 1)):
+        net[j] += net[j + 2 ** i]
+
+if __name__ == '__main__':
+    watek = Thread(target=mat, args=(0,))
+    watek1 = Thread(target=mat, args=(1,))
+    watek2 = Thread(target=mat, args=(2,))
+    watek.start()
+    watek1.start()
+    watek2.start()
+    watek.join()
+    watek1.join()
+    watek2.join()
+
+print("suma wszystkich liczb w tablicy: ",net[0])
