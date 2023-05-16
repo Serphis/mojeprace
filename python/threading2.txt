@@ -57,7 +57,7 @@ class Table:
 def main1():
     ask1 = int(input("podaj rozmiar tablicy "))
     if ask1 == 0 or ask1 == 1 or ask1 < 0 :
-        print("podaj prawid³ow¹ wartoœæ")
+        print("podaj prawidÂ³owÂ¹ wartoÅ“Ã¦")
     else:
         table = Table(ask1)
         table.draw_table()
@@ -98,7 +98,7 @@ class Minimum:
 def main2():
     ask2 = int(input("podaj rozmiar tablicy "))
     if ask2 == 0 or ask2 == 1 or ask2 < 0:
-        print("podaj prawid³ow¹ wartoœæ")
+        print("podaj prawidÂ³owÂ¹ wartoÅ“Ã¦")
     else:
         lista = Minimum()
         lista.creator(ask2)
@@ -160,19 +160,19 @@ class Tekst:
 def main3():
     ask3 = int(input("wybierz tekst(1/2/3) "))
     if ask3 not in [1, 2, 3]:
-        print("podaj prawid³ow¹ wartoœæ")
+        print("podaj prawidÂ³owÂ¹ wartoÅ“Ã¦")
     else:
         dolny = Tekst()
         dolny.wybor(ask3)
-        print("iloœæ samog³osek w tekœcie", dolny.liczba, ":", dolny.ending())
+        print("iloÅ“Ã¦ samogÂ³osek w tekÅ“cie", dolny.liczba, ":", dolny.ending())
 
 def interfejs():
     prawda = True
     while prawda:
         print("1. suma liczb w tablicy\n"
-              "2. minimum w zbiorze nieuporz¹dkowanym\n"
-              "3. policzenie samog³osek w tekœcie\n"
-              "4. wy³¹czenie programu")
+              "2. minimum w zbiorze nieuporzÂ¹dkowanym\n"
+              "3. policzenie samogÂ³osek w tekÅ“cie\n"
+              "4. wyÂ³Â¹czenie programu")
         u = int(input(""))
         if u == 1:
             main1()
