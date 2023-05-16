@@ -51,7 +51,7 @@ while "" in sentences1:
 while "" in sentences2:
     sentences2.remove("")
 
-#porównywanie iloœci zdañ
+#porÃ³wnywanie iloÅ“ci zdaÃ±
 
 counter1 = 0
 for s1 in sentences1:
@@ -65,7 +65,7 @@ sen2 = len(sentences2)
 
 print(len(sentences1), len(sentences2), counter1)
 
-#porównywanie iloœci wspólnych s³ów
+#porÃ³wnywanie iloÅ“ci wspÃ³lnych sÂ³Ã³w
 
 counter2 = 0
 z1 = get_words(file1.lower())
@@ -81,8 +81,8 @@ print(len(z1), len(z2), counter2)
 
 x1 = (" ".join(sorted(set(z1), key=z1.index)))
 x2 = (" ".join(sorted(set(z2), key=z2.index)))
-x1 = len(get_words(x1)) #iloœæ unikalnych wyrazów w 1
-x2 = len(get_words(x2)) #iloœæ unikalnych wyrazów w 2
+x1 = len(get_words(x1)) #iloÅ“Ã¦ unikalnych wyrazÃ³w w 1
+x2 = len(get_words(x2)) #iloÅ“Ã¦ unikalnych wyrazÃ³w w 2
 print(x1, x2)
 
 #ilosc wspolnych unikalnych wyrazow
@@ -90,27 +90,27 @@ print(x1, x2)
 x3 = returnMatches(z1, z2)
 print(x3)
 
-#wykres s³upkowy
+#wykres sÂ³upkowy
 
 p1 = min(counter1/sen1, counter1/sen2)
 p2 = min(counter2/len(z1), counter2/len(z2))
 p1 *= 100
 p2 *= 100
 p = [p1, p2]
-k = ["Zdañ", "Wyrazów"]
+k = ["ZdaÃ±", "WyrazÃ³w"]
 l = [i for i, _ in enumerate(k)]
 
 plt.bar(l, p, color = "red")
-plt.ylabel("Wartoœæ(w %)")
-plt.xlabel("Podobieñstwo wg.:")
+plt.ylabel("WartoÅ“Ã¦(w %)")
+plt.xlabel("PodobieÃ±stwo wg.:")
 plt.xticks(l, k)
 plt.show()
 
-#wykres ko³owy
+#wykres koÂ³owy
 
 xx = x3
 xy = x1 - x3 + x2 - x3
-labels = "Unikalne wspólne wyrazy", "Unikalne niewspólne wyrazy"
+labels = "Unikalne wspÃ³lne wyrazy", "Unikalne niewspÃ³lne wyrazy"
 sizes = [xx, xy]
 explode = (0.1, 0)
 
